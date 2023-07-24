@@ -1,0 +1,72 @@
+.button {
+  @include tertiary-font;
+
+  text-align: center;
+
+  &--primary {
+    @include font-size(lg);
+    width: 12.1rem;
+    background-color: var(--pj-orange-400);
+    color: var(--pj-gray-500);
+    padding: 0.62rem 0;
+    text-transform: uppercase;
+    transition: transform 250ms;
+    display: block;
+    margin: auto;
+
+    &:hover {
+      transform: scale(1.05);
+      transition: transform 250ms;
+    }
+  }
+
+  &--secondary {
+    @include font-size(sm);
+    padding: 0.75rem 0;
+    background-color: var(--pj-orange-500);
+    color: var(--pj-white);
+    border-radius: 8px;
+    text-transform: uppercase;
+  }
+
+  &--black {
+    @include secondary-font;
+    font-size: 1.875rem;
+    background-color: var(--pj-black);
+    color: var(--pj-white);
+    padding: 1rem;
+  }
+
+  &--gray {
+    @include secondary-font;
+    font-size: 1.375rem;
+    background-color: var(--pj-gray-100-2);
+    color: var(--pj-black);
+    padding: 1rem 1.25rem;
+
+    &:hover {
+      background-color: var(--pj-gray-200);
+      transform: scale(0.95);
+      transition: transform 250ms;
+    }
+  }
+
+  &--cross {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid var(--sj-white);
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 50%;
+
+    &:not(:disabled):hover {
+      color: var(--sj-burnt-orange);
+      border-color: var(--sj-burnt-orange);
+    }
+
+    .icon-cross {
+      width: 66%;
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{%- liquid
+  assign classes = "picture" 
+  unless aspect_ratio == blank
+    assign classes = classes | append: " picture--keep-aspect-ratio" 
+  endunless
+  unless class == blank
+    assign classes = classes | append: " " | append: class 
+  endunless
+-%}
+{%- if available_sizes != blank and display_sizes != blank -%}
+  <picture
+    class="{{ classes }}"
+    {% if aspect_ratio -%}
+      style="--sj-picture-aspect-ratio: {{ aspect_ratio }}"
+    {%- endif %}
+  >
+    {% assign alt = alt | default: image.alt | escape %}
+    {% render "image" 
+      class: "picture__image",
+      fit: fit,
+      available_sizes: available_sizes | default: "1",
+      display_sizes: display_sizes | default: "100vw",
+      image: image,
+      alt: alt
+    %}
+  </picture>
+{%- else -%}
+  {% assign message = 'Error: Missing "available_sizes" or "display_sizes" for picture (class: ' | append: class | append: ')' %}
+  {% render "debug-message", 
+    message: message,
+  %}
+{%- endif -%}

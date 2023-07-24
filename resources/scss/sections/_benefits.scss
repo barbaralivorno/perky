@@ -1,0 +1,18 @@
+.s-benefits {
+  margin-bottom: 8.75rem;
+
+  @include for-size(tablet-down) {
+    margin-bottom: 4rem;
+  }
+
+  &__picture {
+    @include for-size(tablet-down) {
+      margin: 1rem auto;
+      display: block;
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+}

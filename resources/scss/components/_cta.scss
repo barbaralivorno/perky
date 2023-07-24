@@ -1,0 +1,25 @@
+.cta {
+  max-width: 37.5rem;
+  margin: 1.25rem auto 0;
+  text-align: center;
+  padding: 0 1rem;
+
+  &__title {
+    @include secondary-font;
+    font-size: 3.2rem;
+    text-transform: uppercase;
+
+    @include for-size(phone-only) {
+      font-size: 2.5rem;
+    }
+  }
+
+  &__text {
+    margin: 1.25rem auto;
+    display: block;
+
+    @include for-size(phone-only) {
+      margin: 1rem auto;
+    }
+  }
+}

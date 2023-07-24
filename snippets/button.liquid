@@ -1,0 +1,24 @@
+{%- assign variant = variant | default: "primary" -%}
+{%- assign classes = "button button--" | append: variant | append: " " | append: class -%}
+{%- capture button_content -%}
+  {{ text }}
+{%- endcapture -%}
+{%- if href -%}
+  <a class="{{ classes }}" href="{{ href }}" {% if new_tab %}target="_blank"{% endif %} {% if aria_label %}aria-label="{{ aria_label }}"{% endif %}>
+    {{ button_content }}
+  </a>
+{%- elsif span -%}
+  <span class="{{ classes }}" aria-role="button">
+    {{ button_content }}
+  </span>
+{%- else -%}
+  <button
+    class="{{ classes }}"
+    type="{{ type | default: "button" }}"
+    {% if disabled %}disabled{% endif %}
+    {% if name %}name="{{ name }}"{% endif %}
+    {% if aria_label %}aria-label="{{ aria_label }}"{% endif %}
+  >
+    {{ button_content }}
+  </button>
+{%- endif -%}

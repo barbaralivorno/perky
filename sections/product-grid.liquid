@@ -1,0 +1,45 @@
+
+<h1 class="s-product-grid__title">
+  {% if template.name == "search" %}
+  Results for: "{{search.terms}}"
+  {% else %}
+  {{ collection.title }}
+  {% endif %}
+</h1>
+{% if template.name == "search" and search.results_count == 0 %}
+  <p class="s-product-grid__no-results">Your search for "{{search.terms}}" didn't match any results.</p>
+{% endif %}
+{% if template.name != "search" %}
+  {% render "products-filters" %}
+{% endif %}
+<ul
+  id="product-grid"
+  data-id="{{ section.id }}"
+  class="s-product-grid__products"
+>
+  {% if template.name == "search" %}
+    {% assign products = search.results %}
+  {% else %}
+    {% assign products = collection.products %}
+  {% endif %}
+  {%- for product in products -%}
+    <li class="s-product-grid__products-item">
+      {% render 'card-product',
+        card_product: product,
+        section_id: section.id
+      %}
+    </li>
+  {%- endfor -%}
+</ul>
+
+{% schema %}
+{
+  "name": "Product Grid",
+  "limit": 1,
+  "tag": "section",
+  "class": "s-product-grid",
+  "templates": [
+    "collection", "search"
+  ]
+}
+{% endschema %}

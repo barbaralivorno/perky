@@ -1,0 +1,20 @@
+.product-feature-list {
+  margin-top: 1.875rem;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  column-gap: 0.625rem;
+
+  &__item {
+    &-icon {
+      width: 60%;
+      margin: auto;
+      display: block;
+    }
+
+    &-text {
+      width: 80%;
+      margin: 0.625rem auto 0;
+      display: block;
+    }
+  }
+}

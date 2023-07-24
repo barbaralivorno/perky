@@ -1,0 +1,31 @@
+<div class="product-gallery">
+  <ul class="product-gallery__list">
+    {%- for image in product.images -%}
+    <li class="product-gallery__list-item">
+      <img
+        class="product-gallery__list-item-image"
+        data-src="{{ image | image_url }}"
+        alt="{{ image.alt | escape }}"
+      >
+    </li>
+    {%- endfor -%}
+  </ul>
+  <div class="product-gallery__group">
+    <div class="product-gallery__featured-image-container">
+      <figure class="product-gallery__featured-image-figure">
+        <img
+          class="product-gallery__featured-image"
+          srcset="{{ product.images[0] | image_url: width: 480 }}"
+          alt="{{ product.images[0].alt | escape }}"
+        >
+        <div class="product-gallery__featured-image-zoom"></div>
+      </figure>
+      <div class="product-gallery__zoomed-image"></div>
+    </div>
+    {% if product.type == "Plant-Based" %}
+      {% render 'product-feature-list-vegan' %}
+    {% else %}
+      {% render 'product-feature-list' %}
+    {% endif %}
+  </div>
+</div>

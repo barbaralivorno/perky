@@ -1,0 +1,65 @@
+{% render "cta",
+  title: section.settings.cta_title,
+  text: section.settings.cta_text,
+  button_text: section.settings.cta_button_text,
+  href: section.settings.cta_button_url 
+%}
+{% if section.blocks.size > 0 %}
+  <ul class="s-ingredients__list">
+    {% for block in section.blocks %}
+      <li class="s-ingredients__list-item">
+        {% render "picture",
+          class: "s-ingredients__list-image",
+          image: block.settings.image,
+          aspect_ratio: 1,
+          available_sizes: "482"
+          display_sizes: "241px"
+        %}
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}
+{% render "ingredients-main-features" %}
+
+{% schema %}
+{
+  "name": "Ingredients",
+  "class": "s-ingredients",
+  "tag": "section",
+  "settings": [
+    {
+      "id": "cta_title",
+      "label": "Title",
+      "type": "text"
+    },
+    {
+      "id": "cta_text",
+      "label": "Text",
+      "type": "richtext"
+    },
+    {
+      "id": "cta_button_text",
+      "label": "Button text",
+      "type": "text"
+    },
+    {
+      "id": "cta_button_url",
+      "label": "Button Link",
+      "type": "url"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Ingredient Image",
+      "type": "ingredient",
+      "settings": [
+        {
+          "id": "image",
+          "type": "image_picker",
+          "label": "Ingredient"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,13 @@
+<div class="cta">
+  <h2 class="cta__title">
+    {{ title }}
+  </h2>
+  <div class="cta__text">
+    {{ text }}
+  </div>
+  {% render "button" 
+    class: "cta__button",
+    text: button_text,
+    href: href
+  %}
+</div>

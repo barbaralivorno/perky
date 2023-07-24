@@ -1,0 +1,51 @@
+{% liquid
+  if card_variant
+    assign card_variant_class = card_variant | prepend: "card-product--"
+  endif
+  assign all_tags = card_product.tags | uniq
+  for product_tag in all_tags
+    assign tag_parts = product_tag | split: ':'
+    assign tag_type = tag_parts | first
+    assign tag_name = tag_parts | last | strip
+    if tag_type == 'flavor'
+      assign product_flavor = tag_name 
+      break
+    endif
+  endfor
+%}
+  
+  <article
+    class="{{ "card-product " | append: card_variant_class | append: class | strip }}"
+    data-protein="{{ card_product.type | handleize }}"
+    data-size="{{ card_product.selected_or_first_available_variant.title | handleize }}"
+    data-flavor="{{ product_flavor | handleize }}"
+    data-product-variant-id="{{ card_product.selected_or_first_available_variant.id }}"
+  >
+  <a href="{{ card_product.url }}" class="card-product__link">
+    {% render "picture",
+      class: "card-product__image",
+      aspect_ratio: "200 / 200",
+      image: card_product.featured_media,
+      alt: card_product.featured_media.alt,
+      display_sizes: "(max-width: 767px) 35vw, 200px",
+      available_sizes: "200,400",
+    %}
+    <div class="card-product__info">
+      <h2 class="card-product__info-title">{{ card_product.title }}</h2>
+      <div class="card-product__info-group">
+        <span class="card-product__info-type">{{ card_product.type }}</span>
+        <span class="card-product__info-variant">{{ card_product.selected_or_first_available_variant.title}}</span>
+      </div>
+      {% if card_product.available %}
+        <span class="card-product__info-price">{% render "price-tag", product: card_product %} <span>/per</span></span>
+      {% else %}
+        <span class="card-product__info-message">Sold out</span>
+      {% endif %}
+      {% render "button",
+          class: "card-product__add-to-cart-button",
+          text: "Shop Now",
+          variant: "secondary"
+        %}
+    </div>
+  </a>
+  </article>

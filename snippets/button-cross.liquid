@@ -1,0 +1,15 @@
+{%- capture icon -%}
+  {% render "svg",
+    asset: "ui-cross.svg",
+    class: "icon-cross"
+  %}
+{%- endcapture -%}
+
+{% render "button",
+  class: class,
+  variant: "cross",
+  text: icon,
+  aria_label: aria_label,
+  href: href,
+  disabled: disabled
+%}

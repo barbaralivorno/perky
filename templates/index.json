@@ -1,0 +1,22 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero-home"
+    },
+    "benefits": {
+      "type": "benefits"
+    },
+    "product_info": {
+      "type": "product-info"
+    },
+    "ingredients": {
+      "type": "ingredients"
+    }
+  },
+  "order": [
+    "hero",
+    "benefits",
+    "product_info",
+    "ingredients"
+  ]
+}

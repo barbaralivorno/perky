@@ -1,0 +1,5 @@
+{% if product.type == "Plant-Based" %}
+  {% render "ingredients-main-features-vegan" %}
+{% else %}
+  {% render "ingredients-main-features" %}
+{% endif %}

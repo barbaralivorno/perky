@@ -1,0 +1,48 @@
+@use "sass:map";
+
+$phone-max-width: 767px;
+$tablet-min-width: ($phone-max-width + 1px);
+$tablet-max-width: 1024px;
+$laptop-min-width: ($tablet-max-width + 1px);
+$laptop-max-width: 1439px;
+$desktop-min-width: ($laptop-max-width + 1px);
+$desktop-max-width: 1920px;
+$hd-min-width: ($desktop-max-width + 1px);
+
+@mixin for-size($size) {
+  @if $size == phone-only {
+    @media (max-width: $phone-max-width) { @content; }
+  }
+
+  @else if $size == tablet-only {
+    @media (min-width: $tablet-min-width) and (max-width: $tablet-max-width) { @content; }
+  }
+
+  @else if $size == laptop-only {
+    @media (min-width: $laptop-min-width) and (max-width: $laptop-max-width) { @content; }
+  }
+
+  @else if $size == tablet-down {
+    @media (max-width: $tablet-max-width) { @content; }
+  }
+
+  @else if $size == laptop-down {
+    @media (max-width: $laptop-max-width) { @content; }
+  }
+
+  @else if $size == tablet-up {
+    @media (min-width: $tablet-min-width) { @content; }
+  }
+
+  @else if $size == laptop-up {
+    @media (min-width: $laptop-min-width) { @content; }
+  }
+
+  @else if $size == desktop-up {
+    @media (min-width: $desktop-min-width) { @content; }
+  }
+
+  @else if $size == hd-up {
+    @media (min-width: $hd-min-width) { @content; }
+  }
+}

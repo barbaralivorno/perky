@@ -1,0 +1,20 @@
+.ingredients-main-features {
+  background-color: var(--pj-black);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 3.125rem 5vw;
+
+  @include for-size(phone-only) {
+    padding: 2rem 1rem;
+  }
+
+  &--vegan {
+    background-color: var(--pj-green-500);
+  }
+
+  .image {
+    width: 50rem;
+    max-width: 80vw;
+  }
+}

@@ -1,0 +1,43 @@
+<div class="s-product-info__content">
+  <h2 class="s-product-info__title">{{ section.settings.title }}</h2>
+  <div class="s-product-info__text">{{ section.settings.text }}</div>
+  {% render "svg",
+    asset: "logo-guaranteed.svg",
+    class: "site-header__logo-image image",
+    alt: ""
+    width: 200,
+    height: 58
+  %}
+</div>
+{% render "picture", 
+  class: "s-product-info__picture",
+  image: section.settings.main_image,
+  available_sizes: "720, 960",
+  display_sizes: "(max-width: 767px) 100vw, 50vw",
+  fit: "cover"
+%}
+
+{% schema %}
+{
+  "name": "Product Info",
+  "class": "s-product-info",
+  "tag": "section",
+  "settings": [
+    {
+      "id": "title",
+      "label": "Title",
+      "type": "text"
+    },
+    {
+      "id": "text",
+      "label": "Text",
+      "type": "richtext"
+    },
+    {
+      "id": "main_image",
+      "type": "image_picker",
+      "label": "Main Image"
+    }
+  ]
+}
+{% endschema %}

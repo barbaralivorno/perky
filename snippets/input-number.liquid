@@ -1,0 +1,17 @@
+{%- liquid
+  assign classes = "input-number" 
+  unless class == blank
+    assign classes = classes | append: " " | append: class 
+  endunless
+-%}
+<div class="{{ classes }}">
+  <button class="input-number__button input-number__decrement-button" type="button">-</button>
+  <input
+    class="input-number__input"
+    type="number"
+    min="1"
+    max="{{ max | default: 20 }}"
+    value="1"
+  />
+  <button class="input-number__button input-number__increment-button" type="button">+</button>
+</div>

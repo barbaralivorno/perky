@@ -1,0 +1,39 @@
+{%- liquid
+  assign fit = fit | default: "contain"
+  assign classes = "image image--" | append: fit | append: " " | append: class | strip
+  
+  comment
+    Calc srcset from available_sizes
+  endcomment
+  if available_sizes != blank
+    assign sizes = available_sizes | split: ","
+    assign srcset = ""
+    for size in sizes
+      assign current_src = ""
+      assign size_str = " " | append: size | append: "w"
+      if image != blank
+        assign current_src = image.src | image_url: width: size | append: size_str
+      elsif asset != blank
+        assign current_src = asset | asset_img_url: width: size | append: size_str
+      endif
+      assign srcset = srcset | append: current_src
+      unless forloop.last
+        assign srcset = srcset | append: ","
+      elsif src == blank and current_src != blank
+          assign src = current_src
+      endunless
+    endfor
+  endif
+-%}
+{%- comment %}theme-check-disable RemoteAsset{% endcomment -%}
+<img
+  class="image {{ classes }}"
+  {% if src != blank -%}
+    src="{{ src }}"
+  {%- endif %}
+  srcset="{{ srcset }}"
+  sizes="{{ display_sizes | default: sizes }}"
+  alt="{{ alt | default: image.alt | escape }}"
+  loading="lazy"
+/>
+{%- comment %}theme-check-enable RemoteAsset{% endcomment -%}

@@ -1,0 +1,48 @@
+.s-product-main {
+  max-width: 75rem;
+  margin: auto;
+  padding: 8.5rem 0 1.25rem;
+  display: flex;
+
+  @include for-size(tablet-down) {
+    max-width: 90vw;
+    padding: 1.5rem 0 2.5rem;
+    flex-direction: column;
+  }
+
+  &__right-column {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    @include for-size(tablet-down) {
+      margin-top: 3rem;
+    }
+
+    @include for-size(phone-only) {
+      margin-top: 1rem;
+    }
+  }
+
+  &__title {
+    @include secondary-font;
+    @include font-size(xxl);
+    display: block;
+    margin-bottom: 0.6rem;
+
+    @include for-size(phone-only) {
+      text-align: center;
+    }
+  }
+
+  &__variant {
+    @include secondary-font;
+    @include font-size(xl);
+    color: var(--pj-gray-300);
+    display: block;
+
+    @include for-size(phone-only) {
+      text-align: center;
+    }
+  }
+}

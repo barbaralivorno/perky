@@ -1,0 +1,10 @@
+<div class="{{ "dropdown " | append: class | strip }}" data-name="{{ name }}">
+  <button type="button" class="dropdown__button">
+    {{ placeholder | default: "" }}
+  </button>
+  <ul class="dropdown__menu">
+    {%- if options_html != blank -%}
+      {{ options_html }}
+    {%- endif -%}
+  </ul>
+</div>

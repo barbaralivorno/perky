@@ -1,0 +1,62 @@
+@use "sass:map";
+
+@mixin primary-font($weight: null) {
+  font-family: "Trade Gothic LT", sans-serif;
+
+  @if $weight {
+    font-family: $weight;
+  }
+}
+
+@mixin secondary-font {
+  font-family: "Franchise Bold", sans-serif;
+  font-weight: 400; // the only available weight
+}
+
+@mixin tertiary-font {
+  font-family: "Trade Gothic Condensed", sans-serif;
+  font-weight: bold; // the only available weight
+}
+
+@mixin font-size($size) {
+  font-size: #{map.get($desktop-font-sizes, $size)};
+
+  @include for-size(tablet-down) {
+    font-size: #{map.get($phone-font-sizes, $size)};
+  }
+
+  @include for-size(laptop-only) {
+    font-size: #{map.get($laptop-font-sizes, $size)};
+  }
+}
+
+@function rem($px) {
+  @return calc($px / 16 * 1rem);
+}
+
+$desktop-font-sizes: (
+  xs: rem(12),
+  sm: rem(14),
+  md: rem(18),
+  lg: rem(20),
+  xl: rem(24),
+  xxl: rem(32),
+);
+
+$laptop-font-sizes: (
+  xs: rem(12),
+  sm: rem(14),
+  md: rem(18),
+  lg: rem(20),
+  xl: rem(24),
+  xxl: rem(32),
+);
+
+$phone-font-sizes: (
+  xs: rem(12),
+  sm: rem(14),
+  md: rem(18),
+  lg: rem(20),
+  xl: rem(24),
+  xxl: rem(32),
+);

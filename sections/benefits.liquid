@@ -1,0 +1,48 @@
+{% render "picture", 
+  class: "s-benefits__picture",
+  image: section.settings.image,
+  available_sizes: "1440, 1920",
+  display_sizes: "100vw",
+  fit: "cover"
+%}
+{% render "cta",
+  title: section.settings.title,
+  text: section.settings.text,
+  button_text: section.settings.button_text,
+  href: section.settings.button_url 
+%}
+
+{% schema %}
+{
+  "name": "Benefits",
+  "class": "s-benefits",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "id": "title",
+      "label": "Title",
+      "type": "text"
+    },
+    {
+      "id": "text",
+      "label": "Text",
+      "type": "richtext"
+    },
+    {
+      "id": "button_text",
+      "label": "Button text",
+      "type": "text"
+    },
+    {
+      "id": "button_url",
+      "label": "Button Link",
+      "type": "url"
+    }
+  ]
+}
+{% endschema %}

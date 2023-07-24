@@ -1,0 +1,50 @@
+{% assign product_description = product.description | split: '[' %}
+{% assign default_first_tab = section.settings.first_tab_text_title %}
+
+{% for description_section in product_description %}
+  {% if forloop.index == 1 %}
+    {% assign main_description = main_description | append: description_section %}
+  {% endif %}
+  {% if forloop.index == 2 %}
+    {% assign quick_facts_section = description_section | replace: ']', '' %}
+    {% assign main_description = main_description | append: quick_facts_section %}
+  {% endif %}
+  {% if forloop.index == 3 %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+<div class="product-description">
+  <div class="product-description--hide-mobile">{{ main_description }}</div>
+  {% render 'form-add-to-cart' %}
+  <div class="product-description__tab-browser-headings-list">
+    {% for tab_headings in product_description %}
+    {% if forloop.index == 1 %}
+      {% continue %}
+    {% elsif forloop.index == 2 %}
+      {% assign tab_items = tab_headings | split: ']' %}
+      {% assign first_tab_title = tab_items | first %}
+        <div data-key="{{ default_first_tab }}" class="product-description__tab-browser-headings-item" hidden>{{ default_first_tab  }}</div>
+      {% else %}
+        {% assign tab_items = tab_headings| split: ']' %}
+        {% assign first_tab_title = tab_items | first %}
+        <div data-key="{{ tab_items | first | strip_html }}" class="product-description__tab-browser-headings-item">{{ tab_items | first | strip_html }}</div>
+    {% endif %}
+    {% endfor %}
+  </div>
+  <div class="product-description__tab-browser-container">
+    {%- for tab_content in product_description -%}
+      {%- unless forloop.index == 1 -%}
+        {%- assign tab_items = tab_content  | split: ']' -%}
+        {%- assign tab_id = tab_items | first -%}
+        <div class="product-description__tab-browser-content" {% if forloop.index == 2 %} data-key="{{ default_first_tab }}" {% endif %} data-key="{{ tab_id }}">
+          {% if forloop.index == 2 %}
+            {{ main_description }}
+          {% else %}
+            {{ tab_items | last }}
+          {% endif %}
+        </div>
+      {%- endunless -%}
+    {%- endfor -%}
+  </div>
+</div>

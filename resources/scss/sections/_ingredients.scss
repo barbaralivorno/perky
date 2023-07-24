@@ -1,0 +1,42 @@
+.s-ingredients {
+  margin-top: 2.65rem;
+
+  &__list {
+    max-width: 90vw;
+    margin: auto;
+    padding: 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    @include for-size(tablet-down) {
+      max-width: 100%;
+    }
+
+    &-item {
+      padding: 0.6rem 1.25rem;
+      flex: 1;
+
+      @include for-size(tablet-down) {
+        padding: 0.5rem;
+      }
+
+      @include for-size(phone-only) {
+        flex: auto;
+        max-width: 50%;
+      }
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+
+  &__main-features {
+    background-color: var(--pj-black);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 3.125rem 5vw;
+  }
+}

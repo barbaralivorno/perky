@@ -1,0 +1,71 @@
+.card-product {
+  display: flex;
+
+  @include for-size(phone-only) {
+    align-items: center;
+  }
+
+  &__link {
+    display: flex;
+  }
+
+  &__info {
+    padding: 1.25rem 0.625rem;
+
+    &-title {
+      @include secondary-font;
+      @include font-size(xxl);
+      margin-bottom: 0.3rem;
+
+      @include for-size(phone-only) {
+        font-size: 1.375rem;
+      }
+    }
+
+    &-type {
+      @include secondary-font;
+      @include font-size(xl);
+      text-transform: uppercase;
+      color: var(--pj-orange-500);
+
+      @include for-size(phone-only) {
+        font-size: 1rem;
+      }
+    }
+
+    &-variant {
+      @include secondary-font;
+      @include font-size(xl);
+      text-transform: uppercase;
+      color: var(--pj-gray-200);
+
+      @include for-size(phone-only) {
+        font-size: 1rem;
+      }
+    }
+
+    &-price {
+      @include tertiary-font;
+      @include font-size(sm);
+      display: block;
+      margin: 0.93rem 0;
+
+      .price-tag {
+        @include font-size(lg);
+      }
+    }
+
+    &-message {
+      @include tertiary-font;
+      @include font-size(lg);
+      display: block;
+      margin: 0.93rem 0;
+    }
+  }
+
+  &__add-to-cart-button {
+    width: 100%;
+    max-width: 9.5rem;
+    display: block;
+  }
+}

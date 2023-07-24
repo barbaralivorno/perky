@@ -1,0 +1,23 @@
+@font-face {
+  font-family: "Trade Gothic LT";
+  src: url("{{ 'font-trade-gothic-lt-regular.woff2' | asset_url }}")
+    format("woff2");
+  font-display: swap;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Franchise Bold";
+  src: url("{{ 'font-franchise-bold-regular.woff' | asset_url }}")
+    format("woff");
+  font-display: swap;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Trade Gothic Condensed";
+  src: url("{{ 'font-trade-gothic-condensed-bold.woff2' | asset_url }}")
+    format("woff2");
+  font-display: swap;
+  font-weight: 700;
+}

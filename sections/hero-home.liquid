@@ -1,0 +1,44 @@
+<a href="{{section.settings.image_link}}">
+  {% render "picture", 
+    class: "s-hero__picture",
+    image: section.settings.image,
+    available_sizes: "1440, 1920",
+    display_sizes: "100vw",
+    fit: "cover"
+  %}
+</a>
+{% render "button" 
+  class: "s-hero__button",
+  text: section.settings.button_text,
+  href: section.settings.button_url
+%}
+
+{% schema %}
+{
+  "name": "Hero",
+  "class": "s-hero",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "url",
+      "id": "image_link",
+      "label": "Image Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "id": "button_text",
+      "label": "Button text",
+      "type": "text"
+    },
+    {
+      "id": "button_url",
+      "label": "Button Link",
+      "type": "url"
+    }
+  ]
+}
+{% endschema %}
